@@ -51,38 +51,38 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/#about">Sobre</a></li>
-          <li><a href="/#menu">Menu</a></li>
-          <li><a href="/#events">Eventos</a></li>
-          <li><a href="/#chefs">Chefs</a></li>
-          <li><a href="/#contact">Contato</a></li>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#chefs">Chefs</a></li>
+         
+          <li><a href="#contact">Contato</a></li>
         </ul>
       </nav><!-- .navbar -->
 
       <a class="btn-book-a-table" href="#book-a-table">Reserve já</a>
+      <a href="/detalhes-reserva2.html" class="login-button">Ver reserva</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
     </div>
   </header><!-- End Header -->
+  <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
-        <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="/assets/img/pratos/tabule.jpg" alt="..." /></div>
+        <div class="row gx-4 gx-lg-5 align-items-center" id="foodDetails">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" id="foodImage" alt="..." /></div>
             <div class="col-md-6">
-                <div class="small mb-1">SKU: BST-498</div>
-                <h1 class="display-5 fw-bolder">Tabule</h1>
+                <div class="small mb-1" id="foodSKU"></div>
+                <h1 class="display-5 fw-bolder" id="foodName"></h1>
                 <div class="fs-5 mb-5">
-                    <span class="text-decoration-line-through">$45.00</span>
-                    <span>$40.00</span>
+                    <span id="newPrice"></span>
                 </div>
-                <p class="lead">Tabule é um prato libanês de salada, frequentemente degustado como um aperitivo. É feito principalmente de triguilho, tomate, cebola, salsa, hortelã e outras ervas, com suco de limão, pimenta e vários temperos. No Líbano, onde surgiu, é consumido por cima de folhas de alface</p>
+                <p class="lead" id="foodDescription"></p>
                 <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" id="add"  >
                         <i class="bi-cart-fill me-1"></i>
                         Adicione a sua reserva
                     </button>
@@ -91,6 +91,69 @@
         </div>
     </div>
 </section>
+
+<script>
+
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  const id = params.get('id');
+  
+  // Check if the id is present
+  if (id) {
+      const apiUrl = `http://localhost:8080/api/v1/foods/${id}`;
+  
+      // Make an HTTP GET request to the API endpoint
+      fetch(apiUrl)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+          })
+          .then(data => {
+              // Update HTML elements with data from the API response
+              document.getElementById('foodSKU').textContent = `SKU: ${data.id}`;
+              document.getElementById('foodName').textContent = data.name;
+              document.getElementById('foodImage').src = `http://localhost:8080/${data.file.replace("./", "")}`;
+              // document.getElementById('oldPrice').textContent = `$${data.price.toFixed(2)}`;
+              document.getElementById('newPrice').textContent = `$${data.price.toFixed(2)}`;
+              document.getElementById('foodDescription').textContent = data.description;
+          })
+          .catch(error => {
+              // Handle errors
+              console.error('Error fetching data:', error);
+          });
+  } else {
+      console.error('No id parameter found in the URL');
+  }
+  
+
+
+  let addBtn = document.querySelector("#add");
+  addBtn.addEventListener("click", ()=>{
+    let url = "http://localhost:8080/api/v1/appointments/add_food"
+    let token = localStorage.getItem("token")
+    fetch(url, {
+      method: 'POST',
+      headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+          // You may need to add other headers based on your API requirements
+      },
+
+      body: JSON.stringify({
+        food_id: parseInt(id)
+      })
+
+    }).then(()=>{
+      alert("Adicionado a sua reserva!")
+    }).catch( err =>{
+      alert("erro inesperado")
+    });
+  })
+
+
+</script>
 <!-- Related items section-->
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5 mt-5">
@@ -141,7 +204,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Adicione a sua reserva</a></div>
+                        <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Adicione a sua reserva</a></div> -->
                     </div>
                 </div>
             </div>
@@ -163,7 +226,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Adicione a sua reserva</a></div>
+                        <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Adicione a sua reserva</a></div> -->
                     </div>
                 </div>
             </div>
@@ -190,7 +253,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Adicione a sua reserva</a></div>
+                        <!-- <div class="text-center"><button class="btn btn-outline-dark mt-auto" >Adicione a sua reserva</button></div> -->
                     </div>
                 </div>
             </div>

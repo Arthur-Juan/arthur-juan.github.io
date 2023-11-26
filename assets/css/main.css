@@ -250,6 +250,7 @@ section {
   z-index: 997;
   height: 90px;
   border-bottom: 1px solid #fff;
+  position: relative;
 }
 
 @media (max-width: 575px) {
