@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Reserva</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #e74c3c;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #e74c3c;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .info-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #000000;
+        }
+
+        .back-button {
+            background-color: #e74c3c;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.js" integrity="sha512-AZURF+lGBgrV0WM7dsCFwaQEltUV5964wxMv+TSzbb6G1/Poa9sFxaCed8l8CcFRTiP7FsCgCyOm/kf1LARyxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.css" integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Detalhes da Reserva</h1>
+    </header>
+
+    <div class="container">
+        <div class="info-container">
+            <label for="nome">Nome:</label>
+            <p id="nome">Nome do Cliente</p>
+
+            <label for="email">Email:</label>
+            <p id="email">email@exemplo.com</p>
+
+            <label for="telefone">Telefone:</label>
+            <p id="telefone">(00) 1234-5678</p>
+
+            <label for="data">Data:</label>
+            <p id="data">01/01/2023</p>
+
+            <label for="comeco">Começo:</label>
+            <p id="comeco">18:00</p>
+
+            <label for="fim">Fim:</label>
+            <p id="fim">20:00</p>
+
+            <label for="quantidade">Quantidade de pessoas:</label>
+            <p id="quantidade">4</p>
+
+            <label for="price">Preço:</label>
+            <p id="price">4</p>
+
+            <div class="glider-contain">
+                <div class="glider">
+                </div>
+              
+                <button aria-label="Previous" class="glider-prev">«</button>
+                <button aria-label="Next" class="glider-next">»</button>
+                <div role="tablist" class="dots"></div>
+              </div>
+
+            <a href="#" class="back-button">Ver outra Reserva</a>
+        </div>
+    </div>
+
+   
+      
+    <script>
+
+
+
+    </script>
+
+
+    <script src="assets/js/index.js"></script>
+    
+    <script>
+
+
+function createCard(food) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style = 'width: 18rem;';
+        card.innerHTML = `
+            <img src="${food.ProfilePic}" class="card-img-top" alt="${food.Name}">
+            <div class="card-body">
+                <h5 class="card-title">${food.Name}</h5>
+                <p class="card-text">${food.Description}</p>
+                <p class="card-text">Price: $${food.Price}</p>
+            </div>
+        `;
+        return card;
+    }
+
+
+window.addEventListener('load', function(){
+  new Glider(document.querySelector('.glider'), {
+    slidesToShow: 5,
+  slidesToScroll: 5,
+  draggable: true,
+  dots: '.dots',
+  arrows: {
+    prev: '.glider-prev',
+    next: '.glider-next'
+  }
+  })
+})
+        let token = localStorage.getItem("token")
+
+        if (token) {
+            // URL of the API endpoint
+            const apiUrl = 'http://localhost:8080/api/v1/appointments';
+
+            // Make a GET request with the token in the headers
+            fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                    // You may need to add other headers based on your API requirements
+                },
+            })
+                .then(response => {
+                    // Check if the request was successful (status code 2xx)
+                    if (response.ok) {
+                        return response.json(); // Parse the response body as JSON
+                    } else {
+                        throw new Error(`Request failed with status: ${response.status}`);
+                    }
+                })
+                .then(data => {
+                    console.log('Data received:', data);
+
+                    document.getElementById('nome').textContent = data.client.Name;
+                    document.getElementById('email').textContent = data.client.Email;
+                    document.getElementById('telefone').textContent = data.client.Phone;
+
+                    // Format date
+                    const formattedDate = new Date(data.date).toLocaleDateString();
+                    document.getElementById('data').textContent = formattedDate;
+
+                    // Format start and end times
+                    const formattedStartTime = new Date(data.start).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    const formattedEndTime = new Date(data.end).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                    document.getElementById('comeco').textContent = formattedStartTime;
+                    document.getElementById('fim').textContent = formattedEndTime;
+
+                    document.getElementById('quantidade').textContent = data.people_qtd;
+
+                    document.querySelector("#price").textContent = data.price;
+
+                    data.foods.forEach(food => {
+                        let card = createCard(food);
+                        document.querySelector(".glider").appendChild(card)
+                    });
+                    return data;
+                })
+                .catch(error => {
+                    // Handle errors during the fetch
+                    console.error('Fetch error:', error);
+                });
+        } else {
+            window.location = "/login-form/login-al-mosso.html";
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
