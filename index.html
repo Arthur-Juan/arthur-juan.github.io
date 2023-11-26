@@ -72,7 +72,7 @@
     <div class="container">
       <div class="row justify-content-between gy-5">
         <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-          <h2 data-aos="fade-up">Al-Mosso
+         <h2 data-aos="fade-up">Al-Mosso
           <p data-aos="fade-up" data-aos-delay="100">Reserve sua comida <strong>árabe</strong> no melhor do mundo!</p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#book-a-table" class="btn-book-a-table">Reserve já</a>
@@ -781,78 +781,50 @@
     <!-- ======= Chefs Section ======= -->
     <section id="chefs" class="chefs section-bg">
       <div class="container" data-aos="fade-up">
-
         <div class="section-header">
           <h2>الطهاة</h2>
           <p>Nossos <span>incríveis</span> Chefs</p>
         </div>
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="chef-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chef-walter.png" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Master Chef</span>
-                <p>Descubra o mundo dos sabores através dos olhos e das mãos de um chef apaixonado pela culinária. Nossa busca incessante pela excelência nos leva a explorar a arte da gastronomia de maneira única, criando experiências culinárias que cativam o paladar e encantam os sentidos.</p>
-                <p>(Jesse, we need to cook!)</p>
-              </div>
-            </div>
-          </div><!-- End Chefs Member -->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="chef-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chef-jesse.png" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Jesse Pinkman</h4>
-                <span>Sous Chef</span>
-                <p>Você está olhando para o coração pulsante da nossa cozinha. Nosso Sous Chef desempenha um papel crucial na criação das delícias culinárias que saem de nossa cozinha e é o guardião da qualidade e da excelência.</p>
-                <p>(Are we in the chef business, or the money business?)</p>
-              </div>
-            </div>
-          </div><!-- End Chefs Member -->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="chef-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chef-gus.png" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Gustavo Fring</h4>
-                <span>Cook</span>
-                <p>Conheça o mais recente talento na nossa equipe culinária. Este chef emergente traz consigo uma paixão inabalável pela gastronomia e um desejo de impressionar os comensais com suas habilidades únicas na cozinha.</p>
-                <p>(I cook In plain sight, same as you.)</p>
-              </div>
-            </div>
-          </div><!-- End Chefs Member -->
-
-        </div>
-
+        <div class="row gy-4" id="chefs-container"></div>
       </div>
-    </section><!-- End Chefs Section -->
+    </section>
+  
+    <script>
+      // Fetch data from the API endpoint
+      fetch('http://localhost:8080/api/v1/chefs')
+        .then(response => response.json())
+        .then(chefs => {
+          const chefsContainer = document.getElementById('chefs-container');
+  
+          // Iterate over the received data and create HTML dynamically
+          chefs.forEach(chef => {
+            const chefHTML = `
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="chef-member">
+                  <div class="member-img">
+                    <img src="http://localhost:8080/${chef.photo.replace("./", "")}" class="img-fluid" alt="${chef.name}">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>${chef.name}</h4>
+                    <span>${chef.role}</span>
+                    <p>${chef.description}</p>
+                  </div>
+                </div>
+              </div>`;
+            
+            chefsContainer.innerHTML += chefHTML;
+          });
+        })
+        .catch(error => console.error('Error fetching chefs:', error));
+    </script>
+  
+    <!-- End Chefs Section -->
 
     <!-- ======= BReserve já Section ======= -->
     <section id="book-a-table" class="book-a-table">
@@ -868,7 +840,7 @@
           <div class="col-lg-4 reservation-img" style="background-image: url(assets/img/reservation.jpg);" data-aos="zoom-out" data-aos-delay="200"></div>
 
           <div class="col-lg-8 d-flex align-items-center reservation-form-bg">
-            <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            <form action="" id="appointment-form" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
               <div class="row gy-4">
                 <div class="col-lg-4 col-md-6">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
@@ -887,11 +859,15 @@
                   <div class="validate"></div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="text" class="form-control" name="time" id="time" placeholder="Periodo" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                  <input type="text" class="form-control" name="start" id="start" placeholder="Começo" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                  <div class="validate"></div>
+                </div>  
+                <div class="col-lg-4 col-md-6">
+                  <input type="text" class="form-control" name="end" id="end" placeholder="Fim" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                   <div class="validate"></div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="number" class="form-control" name="people" id="people" placeholder="Quantidade de pessoas" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                  <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Quantidade de pessoas" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
                   <div class="validate"></div>
                 </div>
               </div>
@@ -912,6 +888,49 @@
 
       </div>
     </section><!-- End BReserve já Section -->
+    
+    <script>
+      let appointmentForm = document.querySelector("#appointment-form");
+    
+      appointmentForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+    
+        let formData = new FormData(appointmentForm);
+    
+        // Convert form data to a JSON object
+        let jsonData = {};
+        formData.forEach((value, key) => {
+          if (key == "quantity") {
+            value = parseInt(value)
+          }
+          jsonData[key] = value;
+        });
+    
+        fetch("http://localhost:8080/api/v1/appointments", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(jsonData),
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            // Handle the response from the server
+            console.log(data);
+            // You can update the UI based on the server response here
+          })
+          .catch(error => {
+            // Handle errors during the fetch
+            console.error("Fetch error:", error);
+          });
+      });
+    </script>
+    
 
     <!-- ======= Gallery Section ======= -->
     <!-- <section id="gallery" class="gallery section-bg">
@@ -999,7 +1018,7 @@
 
         </div>
 
-        <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
+        <form action="" id="contact-form" method="post" role="form" class="php-email-form p-3 p-md-4">
           <div class="row">
             <div class="col-xl-6 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
@@ -1024,7 +1043,36 @@
 
       </div>
     </section><!-- End Contact Section -->
-
+    <script>
+        let form = document.querySelector("#contact-form");
+    
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+    
+          let formData = new FormData(form);
+    
+          fetch("http://localhost:8080/api/v1/contacts", {
+            method: "POST",
+            body: formData,
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then(data => {
+              // Handle the response from the server
+              console.log(data);
+              // You can update the UI based on the server response here
+            })
+            .catch(error => {
+              // Handle errors during the fetch
+              console.error("Fetch error:", error);
+            });
+        });
+    </script>
+    
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
