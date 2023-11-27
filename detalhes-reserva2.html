@@ -171,6 +171,30 @@
                 </div>
 
                 <a href="#" class="back-button">Ver outra Reserva</a>
+
+
+                <button class="btn btn-secondary" onclick="editarReserva()">Editar Reserva</button>
+</div>
+
+<form id="modal" style="display: none;">
+    <label for="novaMensagem">Nova Mensagem:</label>
+    <input type="text" id="novaMensagem" name="message">
+
+    <label for="novaData">Nova Data:</label>
+    <input type="date" id="novaData" name="date">
+
+    <label for="novoComeco">Novo Começo:</label>
+    <input type="time" id="novoComeco" name="start">
+
+    <label for="novoFim">Novo Fim:</label>
+    <input type="time" id="novoFim" name="end">
+
+    <label for="novaQuantidade">Quantas pessoas?:</label>
+    <input type="number" id="novaQuantidade" name="quantity">
+
+
+    <button>Salvar</button>
+</form>
             </div>
         </div>
     </main>
@@ -178,6 +202,62 @@
 
 
     <script>
+        function editarReserva() {
+            // Exibir a modal de edição
+            document.getElementById('modal').style.display = 'block';
+    
+            // Preencher os campos da modal com os valores atuais
+        }
+
+        let formmodal = document.querySelector("#modal")
+        formmodal.addEventListener("submit", (e) =>{
+            e.preventDefault();
+            salvarEdicao();
+        
+        })
+    
+        function salvarEdicao() {
+            // Obter os novos valores da modal
+            let form = document.querySelector("#modal");
+            let formData = new FormData(form)
+
+
+            let jsonData = {};
+        formData.forEach((value, key) => {
+          if (key == "quantity") {
+            value = parseInt(value)
+          }
+          if(key == "date"){
+            var parts = value.split("-")
+            var newDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+            value = newDate
+          }
+
+          if(key == "start" || key == "end"){
+            let splited = value.split(":")
+            value = `${splited[0]}:${splited[1]}`;
+          }
+
+          jsonData[key] = value;
+        });
+
+        let pin = document.querySelector("#pin").value
+        fetch(`http://localhost:8080/api/v1/appointments/${pin}`,{
+            method: "PUT",
+            headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                    // You may need to add other headers based on your API requirements
+                },
+
+            body: JSON.stringify(jsonData)
+        }).then(data => console.log(data))
+        .catch(err => console.log(err))
+
+
+
+        }
+    </script>
 
 
 
@@ -264,6 +344,16 @@
 
                     document.querySelector("#price").textContent = ` R$ ${data.price}`;
                     document.querySelector("#pin").value = data.PIN
+
+
+
+
+                    document.querySelector("#novaMensagem").value = data.message
+                    document.querySelector("#novaData").value = formattedDate
+                    document.querySelector("#novoComeco").value = formattedStartTime
+                    document.querySelector("#novoFim").value = formattedEndTime
+                    document.querySelector("#novaQuantidade").value = data.people_qtd
+
 
                     data.foods.forEach(food => {
                         let card = createCard(food);
