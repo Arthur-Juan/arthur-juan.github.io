@@ -251,7 +251,9 @@
                 },
 
             body: JSON.stringify(jsonData)
-        }).then(data => console.log(data))
+        }).then(data => console.log(data)).then( () =>{
+            location.reload();
+        })
         .catch(err => console.log(err))
 
 
@@ -320,9 +322,12 @@
                     document.getElementById('telefone').textContent = data.client.Phone;
 
                     // Format date
-                    const formattedDate = new Date(data.date).toLocaleDateString();
-                    document.getElementById('data').textContent = formattedDate;
+                    // Convert string to Date object
 
+                    // Format using Intl.DateTimeFormat with custom options
+                    const formattedDate = parseDate(data.date)
+                    document.getElementById('data').textContent = formattedDate;
+                    
                     // Format start and end times
                     const startDateTimeUTC = new Date(data.start);
                     const endDateTimeUTC = new Date(data.end);
@@ -415,6 +420,14 @@
         } else {
             window.location = "/login-form/login-al-mosso.html";
 
+        }
+
+        function parseDate(date){
+            let breaked = date.split("T");
+            let d = breaked[0]
+
+            let parts = d.split("-");
+            return `${parts[2]}/${parts[1]}/${parts[0]}`;
         }
 
 

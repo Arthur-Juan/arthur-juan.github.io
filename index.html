@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Al-Mosso - Index</title>
+  <title>Al-Mosso Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -24,9 +24,17 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="assets/css/detail.css" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Al-Mosso
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/Al-Mosso-bootstrap-restaurant-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
@@ -59,569 +67,199 @@
 
     </div>
   </header><!-- End Header -->
+  <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center section-bg">
-    <div class="container">
-      <div class="row justify-content-between gy-5">
-        <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-         <h2 data-aos="fade-up">Al-Mosso
-          <p data-aos="fade-up" data-aos-delay="100">Reserve sua comida <strong>árabe</strong> no melhor do mundo!</p>
-          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#book-a-table" class="btn-book-a-table">Reserve já</a>
-          </div>
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center" id="foodDetails">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" id="foodImage" alt="..." /></div>
+            <div class="col-md-6">
+                <div class="small mb-1" id="foodSKU"></div>
+                <h1 class="display-5 fw-bolder" id="foodName"></h1>
+                <div class="fs-5 mb-5">
+                    <span id="newPrice"></span>
+                </div>
+                <p class="lead" id="foodDescription"></p>
+                <div class="d-flex">
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" id="add"  >
+                        <i class="bi-cart-fill me-1"></i>
+                        Adicione a sua reserva
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-          <img src="assets/img/kebab.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
-        </div>
-      </div>
     </div>
-  </section><!-- End Hero Section -->
+</section>
 
-  <main id="main">
+<script>
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>معلومات عنا</h2>
-          <p>Veja mais <span>sobre nós</span></p>
-        </div>
-
-        <div class="row gy-4">
-          <div class="col-lg-7 position-relative about-img" style="background-image: url(assets/img/about.png); background-repeat: no-repeat;" data-aos="fade-up" data-aos-delay="150">
-            <div class="call-us position-absolute">
-              <h4>Reserve já</h4>
-              <p>+55 4002-8922</p>
-            </div>
-          </div>
-          <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
-            <div class="content ps-0 ps-lg-5">
-              <p class="fst-italic">
-                No <strong>Al-Mosso</strong>, temos o orgulho de oferecer uma autêntica experiência culinária árabe que encantará os seus sentidos e transportará o seu paladar para as terras distantes do Oriente Médio.
-                
-              </p>
-              <ul>
-                <li><i class="bi bi-check2-all"></i> O nosso compromisso com a qualidade e a tradição reflete-se em cada prato que servimos. Desde o aroma tentador das nossas especiarias exóticas até à frescura dos nossos ingredientes, convidamo-lo a descobrir os sabores únicos que tornam a cozinha árabe uma verdadeira joia gastronômica.</li>
-                <li><i class="bi bi-check2-all"></i> Se esteja a desfrutar do nosso suculento shawarma, a deliciar-se com um prato de falafel acabado de fazer ou a mergulhar na suavidade do nosso hummus caseiro, cada mordida é uma experiência que o aproximará mais da rica herança culinária do Oriente Médio.</li>
-                <li><i class="bi bi-check2-all"></i> Convidamo-lo a juntar-se a nós no <strong>Al-Mosso</strong> para uma viagem culinária que promete satisfazer os seus sentidos e criar memórias inesquecíveis</li>
-              </ul>
-              <p>
-                Esperamos ter a honra de servi-lo e compartilhar a magia da autêntica cozinha árabe no <strong>Al-Mosso</strong>!
-              </p>
-
-              <div class="position-relative mt-4">
-                <img src="assets/img/about-2.jpg" class="img-fluid" alt="">
-                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Why Us Section ======= -->
-   
-    <!-- End Why Us Section -->
-
-    <!-- ======= Stats Counter Section ======= -->
-    <section id="stats-counter" class="stats-counter">
-      <div class="container" data-aos="zoom-out">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Clients</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-    </section><!-- End Stats Counter Section -->
-
-    <!-- ======= Menu Section ======= -->
-    <section id="menu" class="menu">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>القائمة لديناu</h2>
-          <p>Confira o cardápio do <span>Al-Mosso</span></p>
-        </div>
-
-        <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
-          <li class="nav-item">
-            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
-              <h4>*</h4>
-            </a>
-          </li><!-- End tab nav item -->
-      
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
-              <h4>*</h4>
-            </a></li><!-- End tab nav item -->        
-        </ul>
-      
-        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
-          <div class="tab-pane fade active show" id="menu-starters">
-            <div class="tab-header text-center">
-              <p>Menu</p>
-              <!-- <h3>Entradas</h3> -->
-            </div>
-            <div class="row gy-5">
-              <!-- Content will be dynamically added here -->
-            </div>
-          </div><!-- End tab-pane -->
-      
-          <div class="tab-pane fade" id="menu-breakfast">
-            <div class="tab-header text-center">
-              <p>Menu</p>
-              <!-- <h3>Café da manhã</h3> -->
-            </div>
-            <div class="row gy-5">
-              <!-- Content will be dynamically added here -->
-            </div>
-          </div><!-- End tab-pane -->
-      
-          <div class="tab-pane fade" id="menu-lunch">
-            <div class="tab-header text-center">
-              <p>Menu</p>
-              <!-- <h3>Almoço</h3> -->
-            </div>
-            <div class="row gy-5">
-              <!-- Content will be dynamically added here -->
-            </div>
-          </div><!-- End tab-pane -->
-      
-          <div class="tab-pane fade" id="menu-dinner">
-            <div class="tab-header text-center">
-              <p>Menu</p>
-              <!-- <h3>Jantar</h3> -->
-            </div>
-            <div class="row gy-5">
-              <!-- Content will be dynamically added here -->
-            </div>
-          </div><!-- End tab-pane -->
-        </div><!-- End tab-content -->
-      
-        <!-- Add this script at the end of the body tag -->
-        <script>
-
-          let url = "http://localhost:8080/api/v1/foods"
-
-          fetch(url).then( (data) => data.json() )
-          .then( data =>{
-
-            let foods = data;
-
-            // Function to create HTML for a food item
-          function createFoodHTML(food) {
-            var div = document.createElement("div");
-            div.className = "col-lg-4 menu-item";
-            div.innerHTML = `
-              <a href="http://localhost:8080/${food.file.replace("./", "")}" class="glightbox"><img src="http://localhost:8080/${food.file.replace("./", "")}" class="menu-img img-fluid" alt="${food.name}"></a>
-              <h4>${food.name}</h4>
-              <p class="ingredients">${food.description}</p>
-              <p class="price">R$ ${food.price.toFixed(2)}</p>
-              <a href="/detail.html?id=${food.id}">Ver item</a>`;
-            return div;
-          }
-      
-          // Function to populate the tab with food items
-          function populateTab(tabId, foodCategory) {
-            var tabContent = document.querySelector(`#${tabId} .row`);
-            foodCategory.forEach(function (food) {
-              tabContent.appendChild(createFoodHTML(food));
-            });
-          }
-      
-          // Populate each tab with its corresponding food category
-          populateTab("menu-starters", foods.slice(0, 3)); // Example: Displaying the first three items as starters
-          populateTab("menu-breakfast", foods.slice(3, 6)); // Example: Displaying the next three items as breakfast
-
-          }).catch(err =>{
-            console.log(err)
-          })
-          // Your JSON data
-      
-        </script>
-
-
-
-
-
-<section id="events" class="events">
-  <div class="container-fluid" data-aos="fade-up">
-
-    <div class="section-header">
-      <h2>Avaliações</h2>
-      <p>Avaliações <span>FAMOSAS</span> DO NOSSO RESTAURANTE</p>
-    </div>
-
-    <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/cr7-arabe.png)">
-          <h3>Cristiano Ronaldo</h3>
-          <p class="description">
-            "Bom demais! Sempre venho a esse incrível lugar para me sentir no Al-Nassr. Siiiiu"
-          </p>
-        </div><!-- End Event item -->
-
-        <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/neymar-arabe.png)">
-          <h3>Neymar Jr.</h3>
-          <p class="description">
-            "Meu lugar preferido para comer com a família e família sempre em primeiro lugar né pai"
-          </p>
-        </div><!-- End Event item -->
-
-        <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/benzema-arabe.png)">
-          <h3>Karim Benzema</h3>
-          <p class="description">
-            "Fui para o Brasil, comi nesse restaurante absurdo de bom slc, e quando fui para a Arábia me acostumei a culinária graças a esse restaurante" (TRADUÇÃO)
-          </p>
-        </div><!-- End Event item -->
-
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-
-  </div>
-</section><!-- End Events Section -->
-
-
-
-
-
-    <!-- ======= Chefs Section ======= -->
-    <section id="chefs" class="chefs section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="section-header">
-          <h2>الطهاة</h2>
-          <p>Nossos <span>incríveis</span> Chefs</p>
-        </div>
-        <div class="row gy-4" id="chefs-container"></div>
-      </div>
-    </section>
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  const id = params.get('id');
   
-    <script>
-      // Fetch data from the API endpoint
-      fetch('http://localhost:8080/api/v1/chefs')
-        .then(response => response.json())
-        .then(chefs => {
-          const chefsContainer = document.getElementById('chefs-container');
+  // Check if the id is present
+  if (id) {
+      const apiUrl = `http://localhost:8080/api/v1/foods/${id}`;
   
-          // Iterate over the received data and create HTML dynamically
-          chefs.forEach(chef => {
-            const chefHTML = `
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                <div class="chef-member">
-                  <div class="member-img">
-                    <img src="http://localhost:8080/${chef.photo.replace("./", "")}" class="img-fluid" alt="${chef.name}">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter"></i></a>
-                      <a href=""><i class="bi bi-facebook"></i></a>
-                      <a href=""><i class="bi bi-instagram"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>${chef.name}</h4>
-                    <span>${chef.role}</span>
-                    <p>${chef.description}</p>
-                  </div>
-                </div>
-              </div>`;
-            
-            chefsContainer.innerHTML += chefHTML;
-          });
-        })
-        .catch(error => console.error('Error fetching chefs:', error));
-    </script>
-  
-    <!-- End Chefs Section -->
-
-    <!-- ======= BReserve já Section ======= -->
-    <section id="book-a-table" class="book-a-table">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>حجز</h2>
-          <p>Reserve <span>sua mesa</span> no Al-Mosso</p>
-        </div>
-
-        <div class="row g-0">
-
-          <div class="col-lg-4 reservation-img" style="background-image: url(assets/img/reservation.jpg);" data-aos="zoom-out" data-aos-delay="200"></div>
-
-          <div class="col-lg-8 d-flex align-items-center reservation-form-bg">
-            <form action="" id="appointment-form" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
-              <div class="row gy-4">
-                <div class="col-lg-4 col-md-6">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                  <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email">
-                  <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <input type="text" class="form-control" name="phone" id="phone" placeholder="Telefone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                  <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <input type="text" name="date" class="form-control" id="date" placeholder="Data" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                  <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <input type="text" class="form-control" name="start" id="start" placeholder="Começo" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                  <div class="validate"></div>
-                </div>  
-                <div class="col-lg-4 col-md-6">
-                  <input type="text" class="form-control" name="end" id="end" placeholder="Fim" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                  <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Quantidade de pessoas" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
-                  <div class="validate"></div>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Mensagem"></textarea>
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3" id="">
-                <div class="loading">Loading</div>
-                <div class="error-message" id="error"></div>
-                <div class="sent-message" id="success">Sua reserva foi feita! Iremos ligar de volta ou enviar um email lhe atualizando sobre a reserva. Obrigado!</div>
-              </div>
-              <div class="text-center"><button type="submit">Reserve!</button></div>
-            </form>
-          </div><!-- End Reservation Form -->
-
-        </div>
-
-      </div>
-    </section><!-- End BReserve já Section -->
-    
-    <script>
-      let appointmentForm = document.querySelector("#appointment-form");
-    
-      appointmentForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-    
-        let formData = new FormData(appointmentForm);
-    
-        // Convert form data to a JSON object
-        let jsonData = {};
-        formData.forEach((value, key) => {
-          if (key == "quantity") {
-            value = parseInt(value)
-          }
-          jsonData[key] = value;
-        });
-    
-        fetch("http://localhost:8080/api/v1/appointments", {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(jsonData),
-        })
+      // Make an HTTP GET request to the API endpoint
+      fetch(apiUrl)
           .then(response => {
-            if (!response.ok) {
-              throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-          })
-          .then(data => {
-            // Handle the response from the server
-            console.log(data);
-            let success = document.querySelector("#success")
-            success.style.display = "flex"
-            // You can update the UI based on the server response here
-          }).catch(err =>{
-            console.log(err);
-            let error = document.querySelector("#error")
-            error.style.display = "flex";
-
-          })
-      });
-    </script>
-    
-
-    <!-- ======= Gallery Section ======= -->
-    <!-- <section id="gallery" class="gallery section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>gallery</h2>
-          <p>Check <span>Our Gallery</span></p>
-        </div>
-
-        <div class="gallery-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-1.jpg"><img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-2.jpg"><img src="assets/img/gallery/gallery-2.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-3.jpg"><img src="assets/img/gallery/gallery-3.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-4.jpg"><img src="assets/img/gallery/gallery-4.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-5.jpg"><img src="assets/img/gallery/gallery-5.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-6.jpg"><img src="assets/img/gallery/gallery-6.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-7.jpg"><img src="assets/img/gallery/gallery-7.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-8.jpg"><img src="assets/img/gallery/gallery-8.jpg" class="img-fluid" alt=""></a></div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Gallery Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>اتصال</h2>
-          <p>Precisa de ajuda? <span>Fale conosco</span></p>
-        </div>
-
-        <div class="mb-3">
-          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d760.623857894934!2d-43.33827503048559!3d-22.737810161832083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDQ0JzE2LjEiUyA0M8KwMjAnMTUuNSJX!5e1!3m2!1spt-BR!2sbr!4v1696035334056!5m2!1spt-BR!2sbr" frameborder="0" allowfullscreen></iframe>
-        </div><!-- End Google Maps -->
-
-        <div class="row gy-4">
-
-          <div class="col-md-6">
-            <div class="info-item  d-flex align-items-center">
-              <i class="icon bi bi-map flex-shrink-0"></i>
-              <div>
-                <h3>Nosso endereço</h3>
-                <p>R. Aporuna, 13 - São José, Belford Roxo - RJ, 26190-130</p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-md-6">
-            <div class="info-item d-flex align-items-center">
-              <i class="icon bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email</h3>
-                <p>all.mosso@contato.com</p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-md-6">
-            <div class="info-item  d-flex align-items-center">
-              <i class="icon bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Telefone</h3>
-                <p>+55 4002-8922</p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-md-6">
-            <div class="info-item  d-flex align-items-center">
-              <i class="icon bi bi-share flex-shrink-0"></i>
-              <div>
-                <h3>Opening Hours</h3>
-                <div><strong>Segunda-Sexta:</strong> 08h - 23h;
-                  <strong>Sábado:</strong> 08h - 15h;
-                </div>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-        </div>
-
-        <form action="" id="contact-form" method="post" role="form" class="php-email-form p-3 p-md-4">
-          <div class="row">
-            <div class="col-xl-6 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
-            </div>
-            <div class="col-xl-6 form-group">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
-          </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message" id="contact-error"></div>
-            <div class="sent-message" id="contact-success">Mensagem enviada. Obrigado!</div>
-          </div>
-          <div class="text-center"><button type="submit">Enviar mensagem</button></div>
-        </form><!--End Contact Form -->
-
-      </div>
-    </section><!-- End Contact Section -->
-    <script>
-        let form = document.querySelector("#contact-form");
-    
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-    
-          let formData = new FormData(form);
-    
-          fetch("http://localhost:8080/api/v1/contacts", {
-            method: "POST",
-            body: formData,
-          })
-            .then(response => {
               if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                  throw new Error(`HTTP error! Status: ${response.status}`);
               }
               return response.json();
-            })
-            .then(data => {
-              // Handle the response from the server
-              console.log(data);
-              let success = document.querySelector("#contact-success")
-              success.style.display = "flex"
-              // You can update the UI based on the server response here
-            })
-            .catch(error => {
-              // Handle errors during the fetch
-              console.error("Fetch error:", error);
-              let err = document.querySelector("#contact-error")
-              err.style.display = "flex"
-              
-            });
-        });
-    </script>
-    
-  </main><!-- End #main -->
+          })
+          .then(data => {
+              // Update HTML elements with data from the API response
+              document.getElementById('foodSKU').textContent = `SKU: ${data.id}`;
+              document.getElementById('foodName').textContent = data.name;
+              document.getElementById('foodImage').src = `http://localhost:8080/${data.file.replace("./", "")}`;
+              // document.getElementById('oldPrice').textContent = `$${data.price.toFixed(2)}`;
+              document.getElementById('newPrice').textContent = `$${data.price.toFixed(2)}`;
+              document.getElementById('foodDescription').textContent = data.description;
+          })
+          .catch(error => {
+              // Handle errors
+              console.error('Error fetching data:', error);
+          });
+  } else {
+      console.error('No id parameter found in the URL');
+  }
+  
+
+
+  let addBtn = document.querySelector("#add");
+  addBtn.addEventListener("click", ()=>{
+    let url = "http://localhost:8080/api/v1/appointments/add_food"
+    let token = localStorage.getItem("token")
+    fetch(url, {
+      method: 'POST',
+      headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+          // You may need to add other headers based on your API requirements
+      },
+
+      body: JSON.stringify({
+        food_id: parseInt(id)
+      })
+
+    }).then(()=>{
+      alert("Adicionado a sua reserva!")
+    }).catch( err =>{
+      alert("erro inesperado")
+    });
+  })
+
+
+</script>
+<!-- Related items section-->
+<section class="py-5 bg-light">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="fw-bolder mb-4">Produtos</h2>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top menu-card" src="/assets/img/pratos/xuarma.jpg" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">Xauarma</h5>
+                            <!-- Product price-->
+                            $40.00 - $80.00
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ver opções</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Sale badge-->
+                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Almoço</div>
+                    <!-- Product image-->
+                    <img class="card-img-top menu-card" src="/assets/img/pratos/labneh.jpg" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">Labneh</h5>
+                            <!-- Product reviews-->
+                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                            </div>
+                            <!-- Product price-->
+                            <span class="text-muted text-decoration-line-through">$20.00</span>
+                            $18.00
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Adicione a sua reserva</a></div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Sale badge-->
+                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Entrada</div>
+                    <!-- Product image-->
+                    <img class="card-img-top menu-card" src="/assets/img/pratos/hummus.jpg" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">Hummus</h5>
+                            <!-- Product price-->
+                            <span class="text-muted text-decoration-line-through">$50.00</span>
+                            $25.00
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Adicione a sua reserva</a></div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top menu-card" src="/assets/img/pratos/falafel.jpg" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">Falafel</h5>
+                            <!-- Product reviews-->
+                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                            </div>
+                            <!-- Product price-->
+                            $40.00
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <!-- <div class="text-center"><button class="btn btn-outline-dark mt-auto" >Adicione a sua reserva</button></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
