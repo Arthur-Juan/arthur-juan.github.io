@@ -58,10 +58,15 @@
 
         .actions {
             display: grid;
+            gap: 8px;
         }
 
         .glider.draggable .glider-slide img {
             height: 150px;
+        }
+
+        .glider-track{
+            gap: 8px;
         }
     </style>
     <meta content="" name="description">
@@ -116,12 +121,13 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#chefs">Chefs</a></li>
-
-                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#about">Sobre</a></li>
+                    <li><a href="/#menu">Menu</a></li>
+                    <li><a href="/#chefs">Chefs</a></li>
+                    <li><a href="/produtos.html">Produtos</a></li>         
+                    <li><a href="/#contact">Contato</a></li>
+                  </ul>><a href="#contact">Contato</a></li>
                 </ul>
             </nav><!-- .navbar -->
 
@@ -174,6 +180,13 @@
 
 
                 <button class="btn btn-secondary" onclick="editarReserva()">Editar Reserva</button>
+
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="__blank" style="margin-top: 16px;">
+                    <input type="hidden" name="cmd" value="_s-xclick" />
+                    <input type="hidden" name="hosted_button_id" value="5XR2WM73UVRFU" />
+                    <input type="hidden" name="currency_code" value="BRL" />
+                    <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" title="O PayPal é a forma fácil e segura de pagar suas compras on-line." alt="Comprar agora" />
+                  </form>
 </div>
 
 <form id="modal" style="display: none;">
@@ -280,9 +293,9 @@
             <div class="card-body">
                 <h5 class="card-title">${food.Name}</h5>
                 <p class="card-text">${food.Description}</p>
-                <p class="card-text">Price: R$ ${food.Price}</p>
+                <p class="card-text">Preço: R$ ${food.Price.toFixed(2)}</p>
                 <div class="actions">
-                <button  data-id="${food.ID}" class="btn btn-primary detalhe">Ver detalhe</button>
+                <button  data-id="${food.ID}" class="btn btn-primary detalhe" style="margin-botton: 8px;">Ver detalhe</button>
                 <button  data-id="${food.ID}" class="btn btn-danger remover">Remover da reserva</button>
                 </div>
             </div>
@@ -347,7 +360,7 @@
 
                     document.getElementById('quantidade').textContent = data.people_qtd;
 
-                    document.querySelector("#price").textContent = ` R$ ${data.price}`;
+                    document.querySelector("#price").textContent = ` R$ ${data.price.toFixed(2)}`;
                     document.querySelector("#pin").value = data.PIN
 
 
